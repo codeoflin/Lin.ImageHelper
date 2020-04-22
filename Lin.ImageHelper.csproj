@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFrameworks>netstandard2.0;net40;net45;net451;net452;net46;net461;net462;net472;netcoreapp3.1;</TargetFrameworks>
+    <IncludeBuildOutput>true</IncludeBuildOutput>
+    <NuspecFile></NuspecFile>
+    <NuspecProperties></NuspecProperties>
+    <NuspecBasePath></NuspecBasePath>
+    <IsPackable>true</IsPackable>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+  </PropertyGroup>
+  
+  <ItemGroup Condition="'$(TargetFramework)' == 'netstandard2.0'">
+    <PackageReference Include="System.Drawing.Common" Version="4.7.0" />
+  </ItemGroup>
+
+</Project>
