@@ -67,8 +67,11 @@ var jpgbytes = img.ImgToBytes(ImageFormat.RAW_RGBA32);
 var nweimg = jpgbytes.ToImage(ImageFormat.RAW_RGBA32, w, h);
 ```
 
-## 打包指令
+### 编辑图像
 
-dotnet pack -p:PackageVersion=0.0.1
+偶尔你可能需要在图像上做些小修改.
 
-<!--  -p:NuspecFile=~/projects/app1/project.nuspec -p:NuspecBasePath=~/projects/app1/nuget -->
+```SHARP
+var img = Image.FromFile("Test.jpg");
+img.Edit(g => g.DrawRectangle(Pens.Black, new Rectangle(0, 0, 10, 10)));
+```
