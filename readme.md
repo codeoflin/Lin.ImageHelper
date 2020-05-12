@@ -40,6 +40,13 @@ var img = Image.FromFile("Test.jpg");
 var newimg=img.DeepCopyBitmap();
 ```
 
+### 反色
+
+```SHARP
+var img = Image.FromFile("Test.jpg");
+var newimg=img.Reverse();
+```
+
 ### 图像转Byte[]
 
 使用这个方法可以在图像与byte[]之间灵活转换,并且对接其他图像处理库.
@@ -74,4 +81,20 @@ var nweimg = jpgbytes.ToImage(ImageFormat.RAW_RGBA32, w, h);
 ```SHARP
 var img = Image.FromFile("Test.jpg");
 img.Edit(g => g.DrawRectangle(Pens.Black, new Rectangle(0, 0, 10, 10)));
+```
+
+### 图片叠加
+
+可将多张图片叠加在一起.
+后面参数传入的是源图像的可见度比例(每张图片的范围为0~1).
+按照例子这样传入,可让第一张图片的可见度更大一些(70%)第二张图片可见度低些(30%)
+传入多张图片的情况下,需要为每张图片指定一个可见度.
+可见度可以不传,函数内部会自动根据图片数量,按比例生成一组可见度.比如传4张图片,内部会自动生成 [0.25,0.25,0.25,0.25]
+
+```SHARP
+// 加载两张图片
+var img1 = Image.FromFile("Test1.jpg");
+var img2 = Image.FromFile("Test2.jpg");
+// 这样就能将两张图片叠加在一起了,图片可以不止2张,但要求图片必须全部一样大小
+var newimg = new Image[]{img1,img2}.Superposition(new double[]{0.7,0.3});
 ```
