@@ -98,3 +98,27 @@ var img2 = Image.FromFile("Test2.jpg");
 // 这样就能将两张图片叠加在一起了,图片可以不止2张,但要求图片必须全部一样大小
 var newimg = new Image[]{img1,img2}.Superposition(new double[]{0.7,0.3});
 ```
+
+### 关于GIF接口支持
+
+目前只有部分接口支持GIF
+大略有下面这些:
+
+```SHARP
+			var img = Image.FromFile("D:/test1.gif");//从文件读取gif
+
+			//深复制gif
+			var img2 = img.DeepCopyBitmap();
+
+			//转字节数组再转回来,注意,高清的GIF文件会非常大.
+			var gifdata = img2.ImgToBytes(ImageDataFormat.GIF);
+			img2.Dispose();
+			img2 = gifdata.ToImage();
+
+			//分割与合并,注意:同一张gif分割再合并会导致两个关键属性丢失: 1:图片切换时间 2:是否循环   解决方案正在考虑中
+			var imgs = img2.Split();
+			img2.Dispose();
+			img2 = imgs.Merge();
+
+			img2.Save("d:/test2.gif");//保存gif
+```

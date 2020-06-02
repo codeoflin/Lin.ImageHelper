@@ -2,8 +2,9 @@
 
   <PropertyGroup>
     <TargetFrameworks>netstandard2.0;net40;net45;net451;net452;net46;net461;net462;net472;netcoreapp3.1;</TargetFrameworks>
+    <!--OutputType>WinExe</OutputType--><!-- 此选项打开调试模式 -->
     <IncludeBuildOutput>true</IncludeBuildOutput>
-    <NuspecFile></NuspecFile>
+    <NuspecFile>Lin.ImageHelper.nuspec</NuspecFile>
     <NuspecProperties></NuspecProperties>
     <NuspecBasePath></NuspecBasePath>
     <IsPackable>true</IsPackable>
